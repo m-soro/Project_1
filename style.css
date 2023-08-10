@@ -23,9 +23,15 @@ nav ul {
 #score {
   padding: 10px;
   display: flex;
-  justify-content: left;
+  background-color: #0a0044;
+  justify-content: center;
+  color: white;
+}
+
+main {
+  border: 2px solid black;
 }
 
 #gameArea {
-  border: 10px solid black;
+  border: 1px solid red;
 }
