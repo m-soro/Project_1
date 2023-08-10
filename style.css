@@ -1,0 +1,31 @@
+/***===== RESET STYLE =====***/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Chango", cursive;
+}
+
+nav ul {
+  display: flex;
+  width: auto;
+  height: 30px;
+  background-color: #0a0044;
+  justify-content: space-around;
+  list-style-type: none;
+  align-items: center;
+  padding: 0 10px;
+  color: white;
+}
+
+#score {
+  padding: 10px;
+  display: flex;
+  justify-content: left;
+}
+
+#gameArea {
+  border: 10px solid black;
+}
