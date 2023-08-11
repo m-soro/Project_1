@@ -16,7 +16,7 @@ let leftAndRightMargin = 20;
 let ball;
 let score = document.querySelector("#score");
 let paddle = document.querySelector("#paddle");
-let menu = document.querySelector(".gear");
+let menu = document.querySelector(".menu");
 let innerMenu = document.querySelector("#inner-menu");
 let innerMenuShowing = false;
 let easy = document.querySelector("#easy");

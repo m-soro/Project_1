@@ -62,6 +62,14 @@ main {
 
 @media screen and (max-width: 600px) {
   body {
-    font-size: 0.6em;
+    font-size: 0.7em;
+  }
+  #title,
+  #title-image,
+  .menu {
+    font-size: 1em;
+  }
+  #score {
+    font-size: 8em;
   }
 }
