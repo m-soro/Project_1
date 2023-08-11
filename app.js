@@ -34,6 +34,8 @@ let messages = [
   "Great Job!",
   "Incredible!",
   "Awesome!",
+  "Fantastic!",
+  "Super!",
 ];
 
 /**
@@ -111,7 +113,6 @@ window.addEventListener("load", setUpGameArea);
 window.addEventListener("resize", setUpGameArea);
 
 // Modes increases the ball velocity x and y
-
 function selectMode(selected) {
   if (ballObject.topPosition > gameAreaHeight - 25) {
     score.innerText = `Re start the game first!`;
