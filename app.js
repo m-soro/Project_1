@@ -27,10 +27,6 @@ let start = document.querySelector("#start");
 let pause = document.querySelector("#pause");
 let restart = document.querySelector("#restart");
 
-// First thing that happens, when the window load or resize the game creates a new game area with new game Objects
-window.addEventListener("load", setUpGameArea);
-window.addEventListener("resize", setUpGameArea);
-
 /**
  * Sets up the game area and creates a new paddle and ball object
  */
@@ -96,6 +92,10 @@ function setUpGameArea() {
   pause.addEventListener("click", () => cancelAnimationFrame(timer));
   restart.addEventListener("click", () => document.location.reload());
 }
+
+// First thing that happens, when the window load or resize the game creates a new game area with new game Objects
+window.addEventListener("load", setUpGameArea);
+window.addEventListener("resize", setUpGameArea);
 
 // Modes increases the ball velocity x and y
 function easyMode() {
@@ -273,9 +273,9 @@ function mouseDown(event) {
 }
 
 function mouseMove(event) {
-  console.log(drag);
-  console.log(event.targetTouches[0].pageX);
-  console.log("mouse is moving");
+  // for some reason, the drag doesn't work unless I simulate a key press before start
+  document.dispatchEvent(new KeyboardEvent("keydown", { key: "a" }));
+
   // if the flag is true then the MoseDown is fired and the mouse Up is not
   if (drag) {
     // to prevent mouse and touch move fire at the same time
