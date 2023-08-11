@@ -274,6 +274,7 @@ function mouseDown(event) {
 
 function mouseMove(event) {
   console.log(drag);
+  console.log(event.targetTouches[0].pageX);
   console.log("mouse is moving");
   // if the flag is true then the MoseDown is fired and the mouse Up is not
   if (drag) {
@@ -282,7 +283,7 @@ function mouseMove(event) {
     // get the value of the location of the touch event
     // if its a mouse event get it from :
     paddleObject.leftPosition =
-      event.clientX - 33 || event.tragetTouches[0].pageX - 33; // the 32 will move the paddle to the middle of where the mouse event occurs
+      event.clientX - 33 || event.targetTouches[0].pageX - 33; // the 32 will move the paddle to the middle of where the mouse event occurs
     // check to make sure paddle stays in the playing area
     if (paddleObject.leftPosition < 10) {
       paddleObject.leftPosition = 10; // if paddleLeft is less than zero, then move the paddle to left. Prevents the paddle from moving to the left edge of the screen
