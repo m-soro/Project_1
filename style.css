@@ -8,23 +8,47 @@ body {
   font-family: "Chango", cursive;
 }
 
-nav ul {
+#main-menu {
   display: flex;
   width: auto;
   height: 30px;
   background-color: #0a0044;
   justify-content: space-around;
   list-style-type: none;
-  align-items: center;
-  padding: 0 10px;
+  align-items: space-between;
+  padding: 8px 20px;
   color: white;
+}
+
+#inner-menu {
+  display: flex;
+  width: auto;
+  height: 30px;
+  background-color: #0a0044;
+  justify-content: space-around;
+  list-style-type: none;
+  align-items: space-between;
+  padding: 8px 20px;
+  color: white;
+}
+
+.hide {
+  display: none !important;
+}
+
+#main-menu li:last-child {
+  margin-left: auto;
+}
+
+#main-menu li:first-child {
+  margin-right: 0.9em;
 }
 
 #score {
   padding: 10px;
   display: flex;
-  background-color: #0a0044;
   justify-content: center;
+  background-color: #0a0044;
   color: white;
 }
 

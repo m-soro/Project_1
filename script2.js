@@ -10,9 +10,10 @@ let timer;
 let ballObject = {};
 let paddleObject = {};
 let currentScore = 0;
+let score = document.querySelector("#score");
 let gameAreaWidth;
 let gameAreaHeight;
-let score = document.querySelector("#score");
+let ball;
 
 // First thing that happens, when the window load or resize the game creates a new game area with new game Objects
 window.addEventListener("load", setUpGameArea);
@@ -33,9 +34,9 @@ function setUpGameArea() {
   gameArea = document.querySelector("#gameArea");
   gameArea.innerHTML = "";
   gameArea.style.width = `${availableWidth - 20}px`;
-  gameArea.style.height = `${availableHeight - 95}px`;
+  gameArea.style.height = `${availableHeight - 110}px`;
   gameAreaWidth = availableWidth - 20;
-  gameAreaHeight = availableHeight - 95;
+  gameAreaHeight = availableHeight - 25; // the height of the paddle
 
   // add the paddle and ball inside the game area
 
@@ -56,34 +57,32 @@ function setUpGameArea() {
   gameArea.appendChild(paddle);
 
   //Add the Key Listeners
-  document.addEventListener("keydown", keyEventListener, false);
+
+  document.addEventListener("keydown", (event) => {
+    paddleObject.leftPosition = parseInt(paddleObject.leftPosition);
+    paddleObject.width = parseInt(paddleObject.width);
+    if (event.key === "ArrowLeft") {
+      paddleObject.leftPosition -= paddleObject.paddleVelocity;
+      if (paddleObject.leftPosition < 10) paddleObject.leftPosition = 10;
+    } else if (event.key == "ArrowRight") {
+      paddleObject.leftPosition += paddleObject.paddleVelocity;
+      if (paddleObject.leftPosition > availableWidth - 65)
+        paddleObject.leftPosition = availableWidth - 75; // This seems to work? I have no explanation
+    }
+    const paddle = document.querySelector("#paddle");
+    paddle.style.left = `${paddleObject.leftPosition}px`;
+  });
 
   timer = requestAnimationFrame(play);
-}
-
-function keyEventListener(event) {
-  paddleObject.leftPosition = parseInt(paddleObject.leftPosition);
-  paddleObject.width = parseInt(paddleObject.width);
-  if (event.key === "ArrowLeft") {
-    paddleObject.leftPosition -= paddleObject.paddleVelocity;
-    if (paddleObject.leftPosition < 10) paddleObject.leftPosition = 10;
-  } else if (event.key == "ArrowRight") {
-    paddleObject.leftPosition += paddleObject.paddleVelocity;
-    if (paddleObject.leftPosition > availableWidth - 65)
-      paddleObject.leftPosition = availableWidth - 75; // This seems to work? I have no explanation
-  }
-  const paddle = document.querySelector("#paddle");
-  paddle.style.left = `${paddleObject.leftPosition}px`;
 }
 
 function play() {
   moveBall();
   detectCollisions();
-  console.log("availableHeight", availableHeight);
-  console.log("gameAreaHeight", gameAreaHeight);
+  invertColor();
 
   ballObject.topPosition = parseInt(ballObject.topPosition);
-  if (ballObject.topPosition < availableHeight - 65) {
+  if (ballObject.topPosition < availableHeight - 25) {
     timer = requestAnimationFrame(play);
   } else {
     gameOver();
@@ -91,7 +90,7 @@ function play() {
 }
 
 function moveBall() {
-  const ball = document.querySelector("#ball");
+  ball = document.querySelector("#ball");
   ballObject.leftPosition = parseInt(ballObject.leftPosition);
   ballObject.topPosition = parseInt(ballObject.topPosition);
   ballObject.leftPosition += ballObject.velocityX;
@@ -100,26 +99,31 @@ function moveBall() {
   ball.style.top = `${ballObject.topPosition}px`;
 }
 
-function detectCollisions() {
-  if (collisionX()) ballObject.velocityX *= -1;
-  if (collisionY()) ballObject.velocityY *= -1;
+function invertColor() {
+  if (ballObject.topPosition < 40) {
+    ball.style.backgroundColor = "white";
+  } else {
+    ball.style.backgroundColor = "#270245";
+  }
 }
 
-function collisionX() {
-  if (
-    ballObject.leftPosition < 4 ||
-    ballObject.leftPosition > gameAreaWidth - 20
-  ) {
-    return true;
+function detectCollisions() {
+  //prettier-ignore
+  if (ballObject.leftPosition < 4 || ballObject.leftPosition > gameAreaWidth - 20) {
+    ballObject.velocityX *= -1;
   }
-  return false;
+  if (collisionY()) {
+    ballObject.velocityY *= -1;
+  }
 }
+
 function collisionY() {
   if (ballObject.topPosition < 4) {
     return true;
   }
 
-  if (ballObject.topPosition > gameAreaHeight - 65) {
+  // The ball is 16 and the paddle is 25 = 41 rounded off to 45
+  if (ballObject.topPosition > gameAreaHeight - 45) {
     if (
       ballObject.leftPosition >= paddleObject.leftPosition &&
       ballObject.leftPosition <= paddleObject.leftPosition + 65
@@ -135,5 +139,5 @@ function collisionY() {
 function gameOver() {
   cancelAnimationFrame(timer);
   score.innerHTML += "    Game Over!";
-  nav.style.backgroundColor = "rgb(128,0,0)";
+  score.style.backgroundColor = "rgb(128,0,0)";
 }
