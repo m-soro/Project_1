@@ -1,7 +1,7 @@
 import Paddle from "./Paddle.js";
 import Ball from "./Ball.js";
 
-console.log("Script3");
+console.log("app.js");
 let availableWidth;
 let availableHeight;
 let main;
@@ -18,13 +18,14 @@ let score = document.querySelector("#score");
 let paddle = document.querySelector("#paddle");
 let menu = document.querySelector(".menu");
 let innerMenu = document.querySelector("#inner-menu");
-let innerMenuShowing = false;
 let easy = document.querySelector("#easy");
 let medium = document.querySelector("#medium");
 let hard = document.querySelector("#hard");
 let sound = document.querySelector("#sound");
 let music = document.querySelector("#music");
 let start = document.querySelector("#start");
+let pause = document.querySelector("#pause");
+let restart = document.querySelector("#restart");
 
 // First thing that happens, when the window load or resize the game creates a new game area with new game Objects
 window.addEventListener("load", setUpGameArea);
@@ -57,31 +58,54 @@ function setUpGameArea() {
   let randomBallPosition = Math.floor(genRand(100, availableWidth - 100)); // 100 to start and less than 100 of available width, so that the ball don't show up too close to the edge
   let randomPaddlePosition = Math.floor(genRand(100, availableWidth - 85)); // 100 to start and then available width less than 85 because the width of the paddle is 65 + margin of 10 px on each edge
   //prettier-ignore
-  ballObject = new Ball("ball","100px",`${randomBallPosition}px`,"absolute","16px","16px","8px","#270245",3,3);
+  ballObject = new Ball("ball","100px",`${randomBallPosition}px`,"absolute","16px","16px","8px","#270245",3,3); // velocityX and VelocityY
   //prettier-ignore
-  paddleObject = new Paddle("paddle","25px",`${randomPaddlePosition}px`,"absolute","25px","65px","#ff2941",48);
+  paddleObject = new Paddle("paddle","25px",`${randomPaddlePosition}px`,"absolute","25px","65px","#ff2941",48); // speed of paddle movement
   //create ball object
   let ball = ballObject.createBall();
   //create objects
   let paddle = paddleObject.createPaddle();
 
   gameArea.appendChild(paddle);
+  gameArea.appendChild(ball);
+  ball.style.display = "none"; // hide the ball to start so you can't position your paddle yet!
 
   //Add the Key Listeners
   document.addEventListener("keydown", arrowKeysListener, false);
 
   // menu options
   menu.addEventListener("click", menuShow, false);
-  // hard.addEventListener("click", () => {
-  //   ballObject.velocityX += 2;
-  //   ballObject.velocityY += 2;
-  //   console.log("X:", ballObject.velocityX, "Y:", ballObject.velocityY);
-  // });
+  easy.addEventListener("click", easyMode, false);
+  medium.addEventListener("click", mediumMode, false);
+  hard.addEventListener("click", hardMode, false);
 
-  // start.addEventListener("click", () => {
-  gameArea.appendChild(ball);
-  timer = requestAnimationFrame(play);
-  // });
+  // Game Play Options
+  // prettier-ignore
+  start.addEventListener("click",() => (timer = requestAnimationFrame(play) && (ball.style.display = "block"))); // start and display the ball
+  pause.addEventListener("click", () => cancelAnimationFrame(timer));
+  restart.addEventListener("click", () => document.location.reload());
+}
+
+function easyMode() {
+  console.log("Easy Mode Selected!");
+  ballObject.velocityX = 3;
+  ballObject.velocityY = 3;
+  console.log(ballObject.velocityX, ballObject.velocityY);
+}
+
+function mediumMode() {
+  console.log("Medium Mode Selected YOWZA!");
+  ballObject.velocityX = 4;
+  ballObject.velocityY = 4;
+  console.log(ballObject.velocityX, ballObject.velocityY);
+}
+
+function hardMode() {
+  console.log("Hard Mode Selected HOLY SMOKES!!!");
+  console.log(ballObject.velocityX, ballObject.velocityY);
+  ballObject.velocityX = 6;
+  ballObject.velocityY = 6;
+  console.log(ballObject.velocityX, ballObject.velocityY);
 }
 
 function arrowKeysListener(event) {
@@ -101,7 +125,6 @@ function arrowKeysListener(event) {
 
 function menuShow() {
   if (innerMenu.classList.value) {
-    console.log("is the innermenu showing");
     innerMenu.classList.toggle("hide");
     cancelAnimationFrame(timer);
   } else if (!innerMenu.classList.value) {

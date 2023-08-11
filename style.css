@@ -13,9 +13,8 @@ body {
   width: auto;
   height: 30px;
   background-color: #0a0044;
-  justify-content: space-around;
   list-style-type: none;
-  align-items: space-between;
+  align-items: center;
   padding: 8px 20px;
   color: white;
 }
@@ -36,12 +35,17 @@ body {
   display: none !important;
 }
 
-#main-menu li:last-child {
+#title-image,
+#title {
+  font-size: 1.2em;
+}
+
+#main-menu li:nth-child(3) {
   margin-left: auto;
 }
 
 #main-menu li:first-child {
-  margin-right: 0.9em;
+  margin-right: 1.5em;
 }
 
 #score {
@@ -53,23 +57,39 @@ body {
 }
 
 main {
-  border: 2px solid black;
+  border: 1px solid black;
 }
 
-#gameArea {
-  border: 1px solid red;
+#start,
+#pause {
+  margin-right: 0.4em;
+  font-size: 2em;
+}
+
+#restart {
+  font-size: 2em;
+  margin-right: 1em;
+}
+
+#menu,
+#title-image {
+  font-size: 2em;
 }
 
 @media screen and (max-width: 600px) {
-  body {
+  #inner-menu li {
     font-size: 0.7em;
   }
-  #title,
-  #title-image,
-  .menu {
-    font-size: 1em;
+
+  #main-menu li:first-child {
+    margin-right: 0.3em;
+    font-size: 1.1em;
   }
-  #score {
-    font-size: 0.8em;
+
+  #start,
+  #pause,
+  #restart,
+  #menu {
+    font-size: 1.5em;
   }
 }

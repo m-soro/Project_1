@@ -10,12 +10,15 @@
       href="https://fonts.googleapis.com/css2?family=Chango&family=Monofett&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <script type="module" src="script3.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script type="module" src="app.js"></script>
     <link rel="stylesheet" href="style.css" />
 
-    <title>Pong</title>
+    <title>Pong!</title>
   </head>
   <body>
     <main>
@@ -25,14 +28,25 @@
             sports_cricket
             </span></li>
           <li id="title">Pong!</li>
-          <li><span class="material-symbols-outlined menu">
+          <li><span id="start" class="material-symbols-outlined">
+            play_arrow
+            </span></li>
+            <li><span id="pause" class="material-symbols-outlined">
+              pause
+              </span></li>
+              <li><span id="restart" class="material-symbols-outlined">
+                restart_alt
+                </span></li>
+              
+          <li><span id="menu" class="material-symbols-outlined menu">
             menu
             </span></li>
+            
         </ul>
 
         <ul id="inner-menu" class="hide">
           <li id="easy">Easy</li>
-          <li id="med">Medium</li>
+          <li id="medium">Medium</li>
           <li id="hard">Hard</li>
           <li id="sound">Sounds</li>
           <li id="music">Music</li>
@@ -42,6 +56,7 @@
       
 
       <div id="gameArea">
+        
 
         </div>
       </div>
