@@ -59,3 +59,9 @@ main {
 #gameArea {
   border: 1px solid red;
 }
+
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 0.5em;
+  }
+}
