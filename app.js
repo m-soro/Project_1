@@ -14,8 +14,8 @@ let gameAreaWidth;
 let gameAreaHeight;
 let leftAndRightMargin = 20;
 let ball;
+let drag = false; // variable if the user is dragging
 let score = document.querySelector("#score");
-let paddle = document.querySelector("#paddle");
 let menu = document.querySelector(".menu");
 let innerMenu = document.querySelector("#inner-menu");
 let easy = document.querySelector("#easy");
@@ -73,6 +73,17 @@ function setUpGameArea() {
   //Add the Key Listeners
   document.addEventListener("keydown", arrowKeysListener, false);
 
+  // Event Listeners for mouse and touch events
+  // Only one paddle so these event listners can be attached in to the screen
+  gameArea.addEventListener("mousedown", mouseDown, false);
+  gameArea.addEventListener("mousemove", mouseMove, false);
+  gameArea.addEventListener("mouseup", mouseUp, false);
+
+  // add mouse events for touch
+  gameArea.addEventListener("touchstart", mouseDown, false);
+  gameArea.addEventListener("touchmove", mouseMove, false);
+  gameArea.addEventListener("touchend", mouseUp, false);
+
   // menu options
   menu.addEventListener("click", menuShow, false);
   easy.addEventListener("click", easyMode, false);
@@ -86,6 +97,7 @@ function setUpGameArea() {
   restart.addEventListener("click", () => document.location.reload());
 }
 
+// Modes increases the ball velocity x and y
 function easyMode() {
   console.log("Easy Mode Selected!");
   ballObject.velocityX = 3;
@@ -109,15 +121,21 @@ function hardMode() {
 }
 
 function arrowKeysListener(event) {
+  // convert the strings to ints first
   paddleObject.leftPosition = parseInt(paddleObject.leftPosition);
   paddleObject.width = parseInt(paddleObject.width);
+
   if (event.key === "ArrowLeft") {
     paddleObject.leftPosition -= paddleObject.paddleVelocity;
+    // Smaller number on the left x axis, if paddle is nearing the edge of the screen to the left position it exactly at 10, there is margin of 10 on each side
     if (paddleObject.leftPosition < 10) paddleObject.leftPosition = 10;
   } else if (event.key == "ArrowRight") {
     paddleObject.leftPosition += paddleObject.paddleVelocity;
+    // This checks if the starting edge of the paddle div is going over the available width minus the paddle width
+    // if so, the position of the paddle should be set to the available with minus 75, if I hard code 65 which is the
+    // paddle width, it goes over? so I'm putting 75 here
     if (paddleObject.leftPosition > availableWidth - 65)
-      paddleObject.leftPosition = availableWidth - 75; // This seems to work? I have no explanation
+      paddleObject.leftPosition = availableWidth - 75;
   }
   const paddle = document.querySelector("#paddle");
   paddle.style.left = `${paddleObject.leftPosition}px`;
@@ -134,11 +152,9 @@ function menuShow() {
 }
 
 function play() {
-  console.log(ballObject.velocityX, ballObject.velocityY);
   moveBall();
   collisionDetection();
   invertColor();
-
   // ball object css top property is string, this needs to be converted to integers first
   ballObject.topPosition = parseInt(ballObject.topPosition);
   // If the ballObject topPosition is smaller number then its up in the gameArea.
@@ -192,6 +208,7 @@ function invertColor() {
 }
 
 function collisionDetection() {
+  console.log();
   // instead of writing muliple conditions its so much easier to understand if its broken up to separate functions
   // for collision in x axis and xollision in y axis
   if (collisionX()) {
@@ -246,4 +263,36 @@ function gameOver() {
   score.innerHTML = " ";
   score.innerHTML += `Game Over! Score: ${currentScore}`;
   score.style.backgroundColor = "#bc2525";
+}
+
+function mouseUp(event) {
+  drag = false;
+}
+function mouseDown(event) {
+  drag = true;
+}
+
+function mouseMove(event) {
+  console.log(drag);
+  console.log("mouse is moving");
+  // if the flag is true then the MoseDown is fired and the mouse Up is not
+  if (drag) {
+    // to prevent mouse and touch move fire at the same time
+    event.preventDefault();
+    // get the value of the location of the touch event
+    // if its a mouse event get it from :
+    paddleObject.leftPosition =
+      event.clientX - 33 || event.tragetTouches[0].pageX - 33; // the 32 will move the paddle to the middle of where the mouse event occurs
+    // check to make sure paddle stays in the playing area
+    if (paddleObject.leftPosition < 10) {
+      paddleObject.leftPosition = 10; // if paddleLeft is less than zero, then move the paddle to left. Prevents the paddle from moving to the left edge of the screen
+    }
+    //check if paddle is overflowing to the right side of the screen
+    // if paddle is greater than the playing Area width minus 64 (the paddle width) + 10 px buffer to the edge
+    if (paddleObject.leftPosition > availableWidth - 75) {
+      paddleObject.leftPosition = availableWidth - 75; // then assign it to the right most part of the screen
+    }
+    let paddle = document.querySelector("#paddle");
+    paddle.style.left = paddleObject.leftPosition + "px";
+  }
 }
