@@ -26,6 +26,15 @@ let music = document.querySelector("#music");
 let start = document.querySelector("#start");
 let pause = document.querySelector("#pause");
 let restart = document.querySelector("#restart");
+let message = document.querySelector("#message");
+let messages = [
+  "Keep Going!",
+  "Wowza!",
+  "Amazing!",
+  "Great Job!",
+  "Incredible!",
+  "Awesome!",
+];
 
 /**
  * Sets up the game area and creates a new paddle and ball object
@@ -152,10 +161,22 @@ function menuShow() {
   }
 }
 
+function displayMessage() {
+  let randMessIndex = Math.floor(Math.random() * messages.length);
+  if (currentScore >= 20) {
+    if (currentScore % 20 == 0) {
+      message.innerText = messages[randMessIndex];
+      message.style.display = "block";
+      setTimeout(() => (message.style.display = "none"), 5000);
+    }
+  }
+}
+
 function play() {
   moveBall();
   collisionDetection();
   invertColor();
+
   // ball object css top property is string, this needs to be converted to integers first
   ballObject.topPosition = parseInt(ballObject.topPosition);
   // If the ballObject topPosition is smaller number then its up in the gameArea.
@@ -251,6 +272,7 @@ function collisionY() {
       // First condition checks if the ball is at the left edge of the paddle. It asks, is the ball inside the left edge of the paddle?
       // Second condition checks if the ball has gone outside of the paddle right edge position that is the paddle left position + the paddle object width
       currentScore += 5;
+      displayMessage();
       // If so, increment the score
       score.innerHTML = "Score: " + currentScore;
       //output the score
