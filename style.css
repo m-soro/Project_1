@@ -35,6 +35,12 @@ body {
   display: none !important;
 }
 
+.transition {
+  opacity: 0;
+  transform: scale(0);
+  transition: 0.6s ease opacity, 0.6s ease transform;
+}
+
 #title-image,
 #title {
   font-size: 1.2em;

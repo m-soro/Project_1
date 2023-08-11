@@ -18,9 +18,9 @@ let drag = false; // variable if the user is dragging
 let score = document.querySelector("#score");
 let menu = document.querySelector(".menu");
 let innerMenu = document.querySelector("#inner-menu");
-let easy = document.querySelector("#easy");
-let medium = document.querySelector("#medium");
-let hard = document.querySelector("#hard");
+let easy = document.querySelector("#Easy");
+let medium = document.querySelector("#Medium");
+let hard = document.querySelector("#Hard");
 let sound = document.querySelector("#sound");
 let music = document.querySelector("#music");
 let start = document.querySelector("#start");
@@ -71,20 +71,24 @@ function setUpGameArea() {
 
   // Event Listeners for mouse and touch events
   // Only one paddle so these event listners can be attached in to the screen
-  gameArea.addEventListener("mousedown", mouseDown, false);
-  gameArea.addEventListener("mousemove", mouseMove, false);
-  gameArea.addEventListener("mouseup", mouseUp, false);
+  document.addEventListener("mousedown", mouseDown, false);
+  document.addEventListener("mousemove", mouseMove, false);
+  document.addEventListener("mouseup", mouseUp, false);
 
   // add mouse events for touch
-  gameArea.addEventListener("touchstart", mouseDown, false);
-  gameArea.addEventListener("touchmove", mouseMove, false);
-  gameArea.addEventListener("touchend", mouseUp, false);
+  document.addEventListener("touchstart", mouseDown, false);
+  document.addEventListener("touchmove", mouseMove, false);
+  document.addEventListener("touchend", mouseUp, false);
 
   // menu options
   menu.addEventListener("click", menuShow, false);
-  easy.addEventListener("click", easyMode, false);
-  medium.addEventListener("click", mediumMode, false);
-  hard.addEventListener("click", hardMode, false);
+
+  //prettier-ignore
+  easy.addEventListener("click", (event) => selectMode(event.target.id),false);
+  //prettier-ignore
+  medium.addEventListener("click", (event) => selectMode(event.target.id), false);
+  //prettier-ignore
+  hard.addEventListener("click", (event) => selectMode(event.target.id), false);
 
   // Game Play Options
   // prettier-ignore
@@ -98,26 +102,23 @@ window.addEventListener("load", setUpGameArea);
 window.addEventListener("resize", setUpGameArea);
 
 // Modes increases the ball velocity x and y
-function easyMode() {
-  console.log("Easy Mode Selected!");
-  ballObject.velocityX = 3;
-  ballObject.velocityY = 3;
-  console.log(ballObject.velocityX, ballObject.velocityY);
-}
 
-function mediumMode() {
-  console.log("Medium Mode Selected YOWZA!");
-  ballObject.velocityX = 4;
-  ballObject.velocityY = 4;
-  console.log(ballObject.velocityX, ballObject.velocityY);
-}
-
-function hardMode() {
-  console.log("Hard Mode Selected HOLY SMOKES!!!");
-  console.log(ballObject.velocityX, ballObject.velocityY);
-  ballObject.velocityX = 6;
-  ballObject.velocityY = 6;
-  console.log(ballObject.velocityX, ballObject.velocityY);
+function selectMode(selected) {
+  if (ballObject.topPosition > gameAreaHeight - 25) {
+    score.innerText = `Re start the game first!`;
+    setTimeout(() => innerMenu.classList.toggle("hide"), 300);
+  } else {
+    score.innerText = `${selected} mode selected!`;
+    score.style.backgroundColor = "#0a0044";
+    setTimeout(() => innerMenu.classList.toggle("hide"), 300);
+    selected == "Easy"
+      ? (ballObject.velocityX = 3 && (ballObject.velocityY = 3))
+      : selected == "Medium"
+      ? (ballObject.velocityX = 5 && (ballObject.velocityY = 5))
+      : selected == "Hard"
+      ? (ballObject.velocityX = 7 && (ballObject.velocityY = 7))
+      : null;
+  }
 }
 
 function arrowKeysListener(event) {
@@ -201,7 +202,7 @@ function invertColor() {
     ball.style.backgroundColor = "white"; // turn white
   } else if (ballObject.topPosition > gameAreaHeight - 25) {
     // Has the ball top position passed the paddle?
-    ball.style.display = "none";
+    ball.style.backgroundColor = "white";
   } else {
     ball.style.backgroundColor = "#270245";
   }
