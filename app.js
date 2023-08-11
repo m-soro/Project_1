@@ -76,9 +76,9 @@ function setUpGameArea() {
   document.addEventListener("mouseup", mouseUp, false);
 
   // add mouse events for touch
-  document.addEventListener("touchstart", mouseDown, false);
-  document.addEventListener("touchmove", mouseMove, false);
-  document.addEventListener("touchend", mouseUp, false);
+  gameArea.addEventListener("touchstart", mouseDown, false);
+  gameArea.addEventListener("touchmove", mouseMove, false);
+  gameArea.addEventListener("touchend", mouseUp, false);
 
   // menu options
   menu.addEventListener("click", menuShow, false);
