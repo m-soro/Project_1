@@ -78,10 +78,10 @@ function setUpGameArea() {
   //   console.log("X:", ballObject.velocityX, "Y:", ballObject.velocityY);
   // });
 
-  start.addEventListener("click", () => {
-    gameArea.appendChild(ball);
-    timer = requestAnimationFrame(play);
-  });
+  // start.addEventListener("click", () => {
+  gameArea.appendChild(ball);
+  timer = requestAnimationFrame(play);
+  // });
 }
 
 function arrowKeysListener(event) {
@@ -222,5 +222,5 @@ function gameOver() {
   cancelAnimationFrame(timer);
   score.innerHTML = " ";
   score.innerHTML += `Game Over! Score: ${currentScore}`;
-  score.style.backgroundColor = "rgb(128,0,0)";
+  score.style.backgroundColor = "#bc2525";
 }
