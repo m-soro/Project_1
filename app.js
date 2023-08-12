@@ -50,7 +50,8 @@ let ballTapWall = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/
 //prettier-ignore
 let gameOverSound = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/game-over.wav");
 startSound.volume = 0.4;
-ballTapWall.volume = 0.3;
+ballTap.volume = 0.4;
+ballTapWall.volume = 0.2;
 gameOverSound.volume = 0.3;
 let soundEffects = [startSound, ballTap, ballTapWall, gameOverSound];
 
