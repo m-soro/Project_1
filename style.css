@@ -96,9 +96,9 @@ main {
   color: #00204a;
 }
 
-#gameArea {
+/* #gameArea {
   border: 1px solid red;
-}
+} */
 
 @media screen and (max-width: 600px) {
   #inner-menu li {
