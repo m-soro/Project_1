@@ -41,13 +41,14 @@ let messages = [
   "Look at you!",
 ];
 let isMuted = false;
-let startSound = new Audio(
-  "https://github.com/m-soro/Project_1/raw/main/sound/start.wav"
-);
-
-let ballTap = new Audio("sound/ball-tap.wav");
-let ballTapWall = new Audio("sound/ball-tap-wall.wav");
-let gameOverSound = new Audio("sound/game-over.wav");
+//prettier-ignore
+let startSound = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/start.wav");
+//prettier-ignore
+let ballTap = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/ball-tap-wall.wav");
+//prettier-ignore
+let ballTapWall = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/ball-tap-wall.wav");
+//prettier-ignore
+let gameOverSound = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/game-over.wav");
 startSound.volume = 0.4;
 ballTapWall.volume = 0.3;
 gameOverSound.volume = 0.3;
