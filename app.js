@@ -26,9 +26,11 @@ let color = document.querySelector("#color");
 let start = document.querySelector("#start");
 let pause = document.querySelector("#pause");
 let restart = document.querySelector("#restart");
+let music = document.querySelector("#music-icon");
 let message = document.querySelector("#message");
 let isInnerMenuShowing = false;
 let isGameOver = false;
+let isbgMusicOn = false;
 let bgColors = [
   "#e7eaf6",
   "#edf7fa",
@@ -65,8 +67,8 @@ let gameOverSound = new Audio("https://github.com/m-soro/Project_1/raw/main/soun
 //prettier-ignore
 let click = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/click.wav");
 //prettier-ignore
-let music = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/upAndDown1.mp3"); // Was going to play bg music that can be toggled but it can be annoying
-music.loop = true;
+let bgMusic = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/upAndDown1.mp3");
+bgMusic.loop = true;
 let soundEffects = [startSound, ballTap, ballTapWall, gameOverSound, click];
 startSound.volume = 0.3;
 ballTap.volume = 0.4;
@@ -148,6 +150,30 @@ function setUpGameArea() {
   start.addEventListener("click",() => (timer = requestAnimationFrame(play) && (ball.style.display = "block"))); // start and display the ball
   pause.addEventListener("click", () => cancelAnimationFrame(timer));
   restart.addEventListener("click", () => document.location.reload());
+  music.addEventListener("click", (event) => {
+    playBgMusic(event), false;
+  });
+}
+
+function playBgMusic(event) {
+  isbgMusicOn = !isbgMusicOn;
+  if (isbgMusicOn) {
+    event.target.innerText = "music_note";
+    bgMusic.muted = false;
+    bgMusic.play();
+    let fadePoint = bgMusic.duration - 10;
+    function reduceVolume() {
+      if (bgMusic.currentTime >= fadePoint && bgMusic.volume != 0.0) {
+        bgMusic.volume -= 0.09;
+      } else {
+        bgMusic.volume = 0.5;
+      }
+    }
+    setInterval(reduceVolume, 400);
+  } else {
+    event.target.innerText = "music_off";
+    bgMusic.muted = true;
+  }
 }
 
 // For the change background color button, I want to be able to cycle through the options one at a time each click
@@ -227,7 +253,6 @@ function arrowKeysListener(event) {
 
 function menuShow() {
   isInnerMenuShowing = !isInnerMenuShowing;
-  console.log(isInnerMenuShowing);
   if (isInnerMenuShowing) {
     innerMenu.classList.toggle("hide");
     cancelAnimationFrame(timer);

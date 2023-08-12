@@ -76,13 +76,14 @@ main {
 }
 
 #start,
-#pause {
+#pause,
+#restart {
   margin-right: 0.4em;
   font-size: 2em;
 }
 
-#restart {
-  font-size: 2em;
+#music-icon {
+  font-size: 1.8em;
   margin-right: 1em;
 }
 
