@@ -256,7 +256,7 @@ function invertColor() {
     ballObject.topPosition < 86 // Menu height is 46 + Score bar is 40 = 86
   ) {
     ball.style.backgroundColor = "white"; // turn white
-  } else if (ballObject.topPosition > gameAreaHeight - 25) {
+  } else if (ballObject.topPosition >= gameAreaHeight - 25) {
     // Has the ball top position passed the paddle?
     ball.style.backgroundColor = "white";
   } else {
