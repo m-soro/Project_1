@@ -36,7 +36,11 @@ let messages = [
   "Awesome!",
   "Fantastic!",
   "Super!",
+  "Wow!",
+  "Holy Smokes!",
+  "Look at you!",
 ];
+let startSound = new Audio("sound/start.wav");
 
 /**
  * Sets up the game area and creates a new paddle and ball object
@@ -121,6 +125,7 @@ function selectMode(selected) {
     score.innerText = `${selected} mode selected!`;
     score.style.backgroundColor = "#0a0044";
     setTimeout(() => innerMenu.classList.toggle("hide"), 300);
+    startSound.play();
     selected == "Easy"
       ? (ballObject.velocityX = 3 && (ballObject.velocityY = 3))
       : selected == "Medium"
@@ -321,3 +326,5 @@ function mouseMove(event) {
     paddle.style.left = paddleObject.leftPosition + "px";
   }
 }
+
+////////////
