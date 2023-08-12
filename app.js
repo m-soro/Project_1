@@ -27,6 +27,8 @@ let start = document.querySelector("#start");
 let pause = document.querySelector("#pause");
 let restart = document.querySelector("#restart");
 let message = document.querySelector("#message");
+let isInnerMenuShowing = false;
+let isGameOver = false;
 let bgColors = [
   "#e7eaf6",
   "#edf7fa",
@@ -164,7 +166,6 @@ let colorIterator = backgroundColorGenerator();
 
 function changeBackground() {
   main.style.backgroundColor = colorIterator.next().value;
-  setTimeout(() => innerMenu.classList.toggle("hide"), 500);
 }
 
 function toggleSoundEffects() {
@@ -225,13 +226,14 @@ function arrowKeysListener(event) {
 }
 
 function menuShow() {
-  if (innerMenu.classList.value) {
+  isInnerMenuShowing = !isInnerMenuShowing;
+  console.log(isInnerMenuShowing);
+  if (isInnerMenuShowing) {
     innerMenu.classList.toggle("hide");
     cancelAnimationFrame(timer);
-  } else if (!innerMenu.classList.value) {
-    hideInnerMenu();
-    innerMenu.classList.toggle("hide");
+  } else {
     timer = requestAnimationFrame(play);
+    hideInnerMenu();
   }
 }
 
@@ -359,11 +361,14 @@ function collisionY() {
 }
 
 function gameOver() {
-  gameOverSound.play();
   cancelAnimationFrame(timer);
   score.innerHTML = " ";
   score.innerHTML += `Game Over! Score: ${currentScore}`;
   score.style.backgroundColor = "#bc2525";
+  // the game is still checking the ball position even after game over
+  // this at least gives me a one more buffer before encountering the game over bug.
+  isGameOver = !isGameOver;
+  if (isGameOver) gameOverSound.play();
 }
 
 function mouseUp(event) {
