@@ -164,6 +164,7 @@ let colorIterator = backgroundColorGenerator();
 
 function changeBackground() {
   main.style.backgroundColor = colorIterator.next().value;
+  setTimeout(() => innerMenu.classList.toggle("hide"), 500);
 }
 
 function toggleSoundEffects() {
