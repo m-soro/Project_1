@@ -60,8 +60,10 @@ let ballTap = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/ball
 let ballTapWall = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/ball-tap-wall.wav");
 //prettier-ignore
 let gameOverSound = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/game-over.wav");
-let click = new Audio("/sound/click.wav");
-let music = new Audio("sound/upAndDown1.mp3"); // Was going to play bg music that can be toggled but it can be annoying
+//prettier-ignore
+let click = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/click.wav");
+//prettier-ignore
+let music = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/upAndDown1.mp3"); // Was going to play bg music that can be toggled but it can be annoying
 music.loop = true;
 let soundEffects = [startSound, ballTap, ballTapWall, gameOverSound, click];
 startSound.volume = 0.3;
