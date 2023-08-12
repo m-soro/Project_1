@@ -147,7 +147,8 @@ function hideInnerMenu() {
 
 // Modes increases the ball velocity x and y
 function selectMode(selected) {
-  if (ballObject.topPosition > gameAreaHeight - 25) {
+  // if current score is not zero or the ball is still in the DOM hidden then prompt the user to restart
+  if (currentScore !== 0 || ballObject.topPosition > gameAreaHeight - 30) {
     score.innerText = `Re start the game first!`;
     hideInnerMenu();
   } else {
