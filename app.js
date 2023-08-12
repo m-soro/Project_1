@@ -40,7 +40,9 @@ let messages = [
   "Holy Smokes!",
   "Look at you!",
 ];
-let startSound = new Audio("sound/start.wav");
+let startSound = new Audio(
+  "https://github.com/m-soro/Project_1/raw/main/sound/start.wav"
+);
 
 /**
  * Sets up the game area and creates a new paddle and ball object
