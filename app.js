@@ -67,9 +67,10 @@ let gameOverSound = new Audio("https://github.com/m-soro/Project_1/raw/main/soun
 //prettier-ignore
 let click = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/click.wav");
 //prettier-ignore
-let bgMusic = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/upAndDown1.mp3");
+let bgMusic = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/hey!.mp3");
 bgMusic.loop = true;
 let soundEffects = [startSound, ballTap, ballTapWall, gameOverSound, click];
+bgMusic.volume = 0.4;
 startSound.volume = 0.3;
 ballTap.volume = 0.4;
 ballTapWall.volume = 0.2;
@@ -166,7 +167,7 @@ function playBgMusic(event) {
       if (bgMusic.currentTime >= fadePoint && bgMusic.volume != 0.0) {
         bgMusic.volume -= 0.09;
       } else {
-        bgMusic.volume = 0.5;
+        bgMusic.volume = 0.4;
       }
     }
     setInterval(reduceVolume, 400);
