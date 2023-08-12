@@ -44,7 +44,7 @@ let isMuted = false;
 //prettier-ignore
 let startSound = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/start.wav");
 //prettier-ignore
-let ballTap = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/ball-tap-wall.wav");
+let ballTap = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/ball-tap.wav");
 //prettier-ignore
 let ballTapWall = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/ball-tap-wall.wav");
 //prettier-ignore
