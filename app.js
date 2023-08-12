@@ -1,7 +1,7 @@
 import Paddle from "./Paddle.js";
 import Ball from "./Ball.js";
 
-console.log("app.js");
+console.log("hello!.js");
 let availableWidth;
 let availableHeight;
 let main;
@@ -54,6 +54,10 @@ let messages = [
   "Holy Smokes!",
   "Look at you!",
   "You're a Pro!",
+];
+let textContainer = [
+  document.querySelector("#title"),
+  document.querySelector("#title-image"),
 ];
 let isMuted = false;
 //prettier-ignore
@@ -429,3 +433,15 @@ function mouseMove(event) {
     paddle.style.left = paddleObject.leftPosition + "px";
   }
 }
+
+// Some Fun Font Styling!
+function changeHue(textElement) {
+  let hue = 0;
+  setInterval(() => {
+    hue = (hue + 1) % 360;
+    const color = `hsl(${hue}, 90%, 70%)`;
+    textElement.style.color = color;
+  }, 50);
+}
+
+textContainer.forEach((text) => changeHue(text));
