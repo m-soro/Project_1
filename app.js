@@ -58,6 +58,7 @@ let messages = [
 let textContainer = [
   document.querySelector("#title"),
   document.querySelector("#title-image"),
+  document.querySelector("#message"),
 ];
 let isMuted = false;
 //prettier-ignore
