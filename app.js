@@ -22,11 +22,21 @@ let easy = document.querySelector("#Easy");
 let medium = document.querySelector("#Medium");
 let hard = document.querySelector("#Hard");
 let sound = document.querySelector("#sound");
-let music = document.querySelector("#music");
+let color = document.querySelector("#color");
 let start = document.querySelector("#start");
 let pause = document.querySelector("#pause");
 let restart = document.querySelector("#restart");
 let message = document.querySelector("#message");
+let bgColors = [
+  "#e7eaf6",
+  "#edf7fa",
+  "#f9ecec",
+  "#fcf8f3",
+  "#fbeeff",
+  "#faf5e4",
+  "#ecfeff",
+];
+let lists = document.querySelectorAll("li");
 let messages = [
   "Keep Going!",
   "Wowza!",
@@ -39,6 +49,7 @@ let messages = [
   "Wow!",
   "Holy Smokes!",
   "Look at you!",
+  "You're a Pro!",
 ];
 let isMuted = false;
 //prettier-ignore
@@ -49,11 +60,18 @@ let ballTap = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/ball
 let ballTapWall = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/ball-tap-wall.wav");
 //prettier-ignore
 let gameOverSound = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/game-over.wav");
-startSound.volume = 0.4;
+let click = new Audio("/sound/click.wav");
+let music = new Audio("sound/upAndDown1.mp3"); // Was going to play bg music that can be toggled but it can be annoying
+music.loop = true;
+let soundEffects = [startSound, ballTap, ballTapWall, gameOverSound, click];
+startSound.volume = 0.3;
 ballTap.volume = 0.4;
 ballTapWall.volume = 0.2;
 gameOverSound.volume = 0.3;
-let soundEffects = [startSound, ballTap, ballTapWall, gameOverSound];
+
+// First thing that happens, when the window load or resize the game creates a new game area with new game Objects
+window.addEventListener("load", setUpGameArea);
+window.addEventListener("resize", setUpGameArea);
 
 /**
  * Sets up the game area and creates a new paddle and ball object
@@ -110,6 +128,7 @@ function setUpGameArea() {
 
   // menu options
   menu.addEventListener("click", menuShow, false);
+  lists.forEach((list) => list.addEventListener("click", () => click.play()));
 
   //prettier-ignore
   easy.addEventListener("click", (event) => selectMode(event.target.id),false);
@@ -118,6 +137,7 @@ function setUpGameArea() {
   //prettier-ignore
   hard.addEventListener("click", (event) => selectMode(event.target.id), false);
   sound.addEventListener("click", toggleSoundEffects, false);
+  color.addEventListener("click", changeBackground, false);
 
   // Game Play Options
   // prettier-ignore
@@ -126,9 +146,23 @@ function setUpGameArea() {
   restart.addEventListener("click", () => document.location.reload());
 }
 
-// First thing that happens, when the window load or resize the game creates a new game area with new game Objects
-window.addEventListener("load", setUpGameArea);
-window.addEventListener("resize", setUpGameArea);
+// For the change background color button, I want to be able to cycle through the options one at a time each click
+// Instead of just assigning random colors.To do this I will use a generator function that will yield each color every click.
+// This soultion is a bit hacky but it works I will generate a massive colors array so the user can click 2500 times each game
+// before the color defaults to white color LOL!
+function* backgroundColorGenerator() {
+  let megaColorsArray = [];
+  for (let i = 0; i < 500; i++) {
+    megaColorsArray.push(...bgColors);
+  }
+  yield* megaColorsArray;
+}
+
+let colorIterator = backgroundColorGenerator();
+
+function changeBackground() {
+  main.style.backgroundColor = colorIterator.next().value;
+}
 
 function toggleSoundEffects() {
   hideInnerMenu();
@@ -147,7 +181,7 @@ function hideInnerMenu() {
 
 // Modes increases the ball velocity x and y
 function selectMode(selected) {
-  // if current score is not zero or the ball is still in the DOM hidden then prompt the user to restart
+  // if current score is not zero or the ball is still in the DOM hidden, then prompt the user to restart
   if (currentScore !== 0 || ballObject.topPosition > gameAreaHeight - 30) {
     score.innerText = `Re start the game first!`;
     hideInnerMenu();
@@ -192,6 +226,7 @@ function menuShow() {
     innerMenu.classList.toggle("hide");
     cancelAnimationFrame(timer);
   } else if (!innerMenu.classList.value) {
+    hideInnerMenu();
     innerMenu.classList.toggle("hide");
     timer = requestAnimationFrame(play);
   }
@@ -259,7 +294,7 @@ function invertColor() {
     ball.style.backgroundColor = "white"; // turn white
   } else if (ballObject.topPosition >= gameAreaHeight - 25) {
     // Has the ball top position passed the paddle?
-    ball.style.backgroundColor = "white";
+    ball.style.backgroundColor = "#bc2525";
   } else {
     ball.style.backgroundColor = "#270245";
   }
@@ -360,5 +395,3 @@ function mouseMove(event) {
     paddle.style.left = paddleObject.leftPosition + "px";
   }
 }
-
-////////////
