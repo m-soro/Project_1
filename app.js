@@ -40,9 +40,18 @@ let messages = [
   "Holy Smokes!",
   "Look at you!",
 ];
+let isMuted = false;
 let startSound = new Audio(
   "https://github.com/m-soro/Project_1/raw/main/sound/start.wav"
 );
+
+let ballTap = new Audio("sound/ball-tap.wav");
+let ballTapWall = new Audio("sound/ball-tap-wall.wav");
+let gameOverSound = new Audio("sound/game-over.wav");
+startSound.volume = 0.4;
+ballTapWall.volume = 0.3;
+gameOverSound.volume = 0.3;
+let soundEffects = [startSound, ballTap, ballTapWall, gameOverSound];
 
 /**
  * Sets up the game area and creates a new paddle and ball object
@@ -106,6 +115,7 @@ function setUpGameArea() {
   medium.addEventListener("click", (event) => selectMode(event.target.id), false);
   //prettier-ignore
   hard.addEventListener("click", (event) => selectMode(event.target.id), false);
+  sound.addEventListener("click", toggleSoundEffects, false);
 
   // Game Play Options
   // prettier-ignore
@@ -118,15 +128,30 @@ function setUpGameArea() {
 window.addEventListener("load", setUpGameArea);
 window.addEventListener("resize", setUpGameArea);
 
+function toggleSoundEffects() {
+  hideInnerMenu();
+  isMuted = !isMuted;
+  if (isMuted === true) {
+    soundEffects.forEach((soundEffect) => (soundEffect.muted = true));
+  } else {
+    ballTap.play();
+    soundEffects.forEach((soundEffect) => (soundEffect.muted = false));
+  }
+}
+
+function hideInnerMenu() {
+  setTimeout(() => innerMenu.classList.toggle("hide"), 300);
+}
+
 // Modes increases the ball velocity x and y
 function selectMode(selected) {
   if (ballObject.topPosition > gameAreaHeight - 25) {
     score.innerText = `Re start the game first!`;
-    setTimeout(() => innerMenu.classList.toggle("hide"), 300);
+    hideInnerMenu();
   } else {
     score.innerText = `${selected} mode selected!`;
     score.style.backgroundColor = "#0a0044";
-    setTimeout(() => innerMenu.classList.toggle("hide"), 300);
+    hideInnerMenu();
     startSound.play();
     selected == "Easy"
       ? (ballObject.velocityX = 3 && (ballObject.velocityY = 3))
@@ -259,6 +284,7 @@ function collisionX() {
     // Second condition, checks if ballleftposition is greater than the width of the gameArea less the 10px margin on the right. BIG numbers here!
     ballObject.leftPosition > gameAreaWidth - leftAndRightMargin / 2
   ) {
+    ballTapWall.play();
     return true;
   }
   return false;
@@ -267,6 +293,7 @@ function collisionX() {
 function collisionY() {
   // checks if ball hits the top position
   if (ballObject.topPosition < 4) {
+    ballTapWall.play();
     return true;
   }
 
@@ -280,6 +307,7 @@ function collisionY() {
       // First condition checks if the ball is at the left edge of the paddle. It asks, is the ball inside the left edge of the paddle?
       // Second condition checks if the ball has gone outside of the paddle right edge position that is the paddle left position + the paddle object width
       currentScore += 5;
+      ballTap.play()
       displayMessage();
       // If so, increment the score
       score.innerHTML = "Score: " + currentScore;
@@ -290,6 +318,7 @@ function collisionY() {
 }
 
 function gameOver() {
+  gameOverSound.play();
   cancelAnimationFrame(timer);
   score.innerHTML = " ";
   score.innerHTML += `Game Over! Score: ${currentScore}`;

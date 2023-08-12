@@ -31,14 +31,12 @@ body {
   color: white;
 }
 
-.hide {
-  display: none !important;
+#inner-menu li:hover {
+  border-bottom: 0.5em solid white;
 }
 
-.transition {
-  opacity: 0;
-  transform: scale(0);
-  transition: 0.6s ease opacity, 0.6s ease transform;
+.hide {
+  display: none !important;
 }
 
 #title-image,
@@ -106,7 +104,3 @@ main {
   font-size: 1.2em;
   text-align: center;
 }
-
-/* #gameArea {
-  border: 1px red solid;
-} */
