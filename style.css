@@ -114,8 +114,13 @@ main {
   #start,
   #pause,
   #restart,
+  #music-icon,
   #menu {
     font-size: 1.5em;
+  }
+
+  #music-icon {
+    margin-right: 0.8em;
   }
 }
 
