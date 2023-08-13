@@ -97,10 +97,6 @@ main {
   color: #00204a;
 }
 
-/* #gameArea {
-  border: 1px solid red;
-} */
-
 @media screen and (max-width: 600px) {
   #inner-menu li {
     font-size: 0.7em;
