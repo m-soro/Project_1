@@ -73,8 +73,18 @@ let gameOverSound = new Audio("https://github.com/m-soro/Project_1/raw/main/soun
 let click = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/click.wav");
 //prettier-ignore
 let bgMusic = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/hey!.mp3");
+//prettier-ignore
+let bell = new Audio("sound/happyBell.wav")
 bgMusic.loop = true;
-let soundEffects = [startSound, ballTap, ballTapWall, gameOverSound, click];
+let soundEffects = [
+  startSound,
+  ballTap,
+  ballTapWall,
+  gameOverSound,
+  click,
+  bell,
+];
+bell.volume = 0.9;
 bgMusic.volume = 0.4;
 startSound.volume = 0.3;
 ballTap.volume = 0.4;
@@ -217,7 +227,7 @@ function hideInnerMenu() {
 
 // Modes increases the ball velocity x and y
 function selectMode(selected) {
-  // if current score is not zero or the ball is still in the DOM hidden, then prompt the user to restart
+  //  if current score is not zero or the ball is still in the DOM hidden, then prompt the user to restart
   if (currentScore !== 0 || ballObject.topPosition > gameAreaHeight - 30) {
     score.innerText = `Re start the game first!`;
     hideInnerMenu();
@@ -268,7 +278,7 @@ function menuShow() {
   }
 }
 
-function displayMessage() {
+function everyNthScore() {
   let randMessIndex = Math.floor(Math.random() * messages.length);
   if (currentScore >= 20) {
     if (currentScore % 20 == 0) {
@@ -276,6 +286,9 @@ function displayMessage() {
       message.style.display = "block";
       setTimeout(() => (message.style.display = "none"), 5000);
     }
+  }
+  if (currentScore % 100 == 0) {
+    bell.play();
   }
 }
 
@@ -382,7 +395,7 @@ function collisionY() {
       // Second condition checks if the ball has gone outside of the paddle right edge position that is the paddle left position + the paddle object width
       currentScore += 5;
       ballTap.play()
-      displayMessage();
+      everyNthScore();
       // If so, increment the score
       score.innerHTML = "Score: " + currentScore;
       //output the score
