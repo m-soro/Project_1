@@ -74,7 +74,7 @@ let click = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/click.
 //prettier-ignore
 let bgMusic = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/hey!.mp3");
 //prettier-ignore
-let bell = new Audio("sound/happyBell.wav")
+let bell = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/happyBell.mp3")
 bgMusic.loop = true;
 let soundEffects = [
   startSound,
