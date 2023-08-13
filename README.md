@@ -1,4 +1,4 @@
-# Pong
+# Pong!
 
 ## A super fun classic! This is Pong!
 
