@@ -1,7 +1,7 @@
 import Paddle from "./Paddle.js";
 import Ball from "./Ball.js";
 
-console.log("Hello from Pong! and Thanks for playing!");
+console.log("Hello from Pong! and thanks for playing!");
 let availableWidth;
 let availableHeight;
 let main;
@@ -132,10 +132,9 @@ function setUpGameArea() {
 
   gameArea.appendChild(paddle);
   gameArea.appendChild(ball);
-  ball.style.display = "none"; // hide the ball to start so you can't position your paddle yet!
 
   //Add the Key Listeners
-  document.addEventListener("keydown", arrowKeysListener, false);
+  document.addEventListener("keydown", keyListeners, false);
 
   // Event Listeners for mouse and touch events
   // Only one paddle so these event listners can be attached in to the screen
@@ -163,7 +162,7 @@ function setUpGameArea() {
 
   // Game Play Options
   // prettier-ignore
-  start.addEventListener("click",() => (timer = requestAnimationFrame(play) && (ball.style.display = "block"))); // start and display the ball
+  start.addEventListener("click", startPlay, false);
   pause.addEventListener("click", pauseGame, false);
   restart.addEventListener("click", reStart, false);
   music.addEventListener("click", (event) => {
@@ -171,14 +170,18 @@ function setUpGameArea() {
   });
 }
 
-function reStart() {
-  restart.style.color = "orange";
-  restart.innerText = "refresh";
-  setTimeout(() => document.location.reload(), 800);
+function startPlay() {
+  timer = requestAnimationFrame(play);
 }
 
 function pauseGame() {
   cancelAnimationFrame(timer);
+}
+
+function reStart() {
+  restart.style.color = "orange";
+  restart.innerText = "refresh";
+  setTimeout(() => document.location.reload(), 800);
 }
 
 function playBgMusic(event) {
@@ -262,7 +265,7 @@ function selectMode(selected) {
   console.log(`You selected ${selected} mode, ball speed is: ${ballObject.velocityX}`);
 }
 
-function arrowKeysListener(event) {
+function keyListeners(event) {
   // convert the strings to ints first
   paddleObject.leftPosition = parseInt(paddleObject.leftPosition);
   paddleObject.width = parseInt(paddleObject.width);
@@ -281,6 +284,10 @@ function arrowKeysListener(event) {
   }
   const paddle = document.querySelector("#paddle");
   paddle.style.left = `${paddleObject.leftPosition}px`;
+
+  if (event.key === "Enter") startPlay();
+  if (event.key === " ") pauseGame();
+  if (event.key === "r") reStart();
 }
 
 function menuShow() {
@@ -443,14 +450,16 @@ function mouseMove(event) {
   // for some reason, the drag doesn't work unless I simulate a key press before start
   document.dispatchEvent(new KeyboardEvent("keydown", { key: "a" }));
 
-  // if the flag is true then the MoseDown is fired and the mouse Up is not
+  // if the flag is true then the MouseDown is fired and the mouse Up is not
   if (drag) {
-    // to prevent mouse and touch move fire at the same time
+    // to stop the mouse and touch event firing at the same time
     event.preventDefault();
+    event.stopImmediatePropagation();
     // get the value of the location of the touch event
-    // if its a mouse event get it from :
-    paddleObject.leftPosition =
-      event.clientX - 33 || event.targetTouches[0].pageX - 33; // the 32 will move the paddle to the middle of where the mouse event occurs
+    // if its a mouse event get it from event.clientX:
+    // the 33 will move the paddle to the middle of where the mouse event occurs
+    //prettier-ignore
+    paddleObject.leftPosition = event.clientX - 33 || event.targetTouches[0].pageX - 33;
     // check to make sure paddle stays in the playing area
     if (paddleObject.leftPosition < 10) {
       paddleObject.leftPosition = 10; // if paddleLeft is less than zero, then move the paddle to left. Prevents the paddle from moving to the left edge of the screen
