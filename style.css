@@ -105,6 +105,7 @@ main {
 
   #inner-menu li {
     font-size: 0.7em;
+    padding: 0 0.6em;
   }
 
   #title-image {

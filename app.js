@@ -164,11 +164,21 @@ function setUpGameArea() {
   // Game Play Options
   // prettier-ignore
   start.addEventListener("click",() => (timer = requestAnimationFrame(play) && (ball.style.display = "block"))); // start and display the ball
-  pause.addEventListener("click", () => cancelAnimationFrame(timer));
-  restart.addEventListener("click", () => document.location.reload());
+  pause.addEventListener("click", pauseGame, false);
+  restart.addEventListener("click", reStart, false);
   music.addEventListener("click", (event) => {
     playBgMusic(event), false;
   });
+}
+
+function reStart() {
+  restart.style.color = "orange";
+  restart.innerText = "refresh";
+  setTimeout(() => document.location.reload(), 800);
+}
+
+function pauseGame() {
+  cancelAnimationFrame(timer);
 }
 
 function playBgMusic(event) {
@@ -211,6 +221,7 @@ function changeBackground() {
 }
 
 function toggleSoundEffects() {
+  isInnerMenuShowing = !isInnerMenuShowing;
   hideInnerMenu();
   isMuted = !isMuted;
   if (isMuted === true) {
@@ -222,18 +233,22 @@ function toggleSoundEffects() {
 }
 
 function hideInnerMenu() {
+  isInnerMenuShowing
+    ? (menu.innerText = "menu_open")
+    : (menu.innerText = "menu");
   setTimeout(() => innerMenu.classList.toggle("hide"), 300);
 }
 
 // Modes increases the ball velocity x and y
 function selectMode(selected) {
+  isInnerMenuShowing = !isInnerMenuShowing;
   if (ballObject.topPosition > gameAreaHeight - 30) {
-    score.innerText = `Re start the game first!`;
     hideInnerMenu();
+    score.innerText = `Re start the game first!`;
   } else {
+    hideInnerMenu();
     score.innerText = `${selected} mode selected!`;
     score.style.backgroundColor = "#0a0044";
-    hideInnerMenu();
     startSound.play();
     selected == "Easy"
       ? (ballObject.velocityX = 3 && (ballObject.velocityY = 3))
@@ -271,10 +286,9 @@ function arrowKeysListener(event) {
 function menuShow() {
   isInnerMenuShowing = !isInnerMenuShowing;
   if (isInnerMenuShowing) {
-    innerMenu.classList.toggle("hide");
+    hideInnerMenu();
     cancelAnimationFrame(timer);
   } else {
-    timer = requestAnimationFrame(play);
     hideInnerMenu();
   }
 }
@@ -413,6 +427,7 @@ function gameOver() {
   // this at least gives me a one more buffer before encountering the game over bug.
   isGameOver = !isGameOver;
   if (isGameOver) gameOverSound.play();
+  start.innerText = "play_disabled";
   restart.innerText = "refresh";
   restart.style.color = "red";
 }
