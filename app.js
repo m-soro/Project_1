@@ -1,7 +1,7 @@
 import Paddle from "./Paddle.js";
 import Ball from "./Ball.js";
 
-console.log("hello!.js");
+console.log("Hello from Pong! and Thanks for playing!");
 let availableWidth;
 let availableHeight;
 let main;
@@ -227,8 +227,7 @@ function hideInnerMenu() {
 
 // Modes increases the ball velocity x and y
 function selectMode(selected) {
-  //  if current score is not zero or the ball is still in the DOM hidden, then prompt the user to restart
-  if (currentScore !== 0 || ballObject.topPosition > gameAreaHeight - 30) {
+  if (ballObject.topPosition > gameAreaHeight - 30) {
     score.innerText = `Re start the game first!`;
     hideInnerMenu();
   } else {
@@ -244,6 +243,8 @@ function selectMode(selected) {
       ? (ballObject.velocityX = 7 && (ballObject.velocityY = 7))
       : null;
   }
+  //prettier-ignore
+  console.log(`You selected ${selected} mode, ball speed is: ${ballObject.velocityX}`);
 }
 
 function arrowKeysListener(event) {
@@ -412,6 +413,8 @@ function gameOver() {
   // this at least gives me a one more buffer before encountering the game over bug.
   isGameOver = !isGameOver;
   if (isGameOver) gameOverSound.play();
+  restart.innerText = "refresh";
+  restart.style.color = "red";
 }
 
 function mouseUp(event) {
