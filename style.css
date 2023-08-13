@@ -58,8 +58,8 @@ a {
   margin-left: auto;
 }
 
-#main-menu li:first-child {
-  margin-right: 1.5em;
+#title-image {
+  margin-right: 0.2em;
 }
 
 #score {
@@ -98,13 +98,19 @@ main {
 }
 
 @media screen and (max-width: 600px) {
+  #main-menu {
+    display: flex;
+    justify-content: space-around;
+  }
+
   #inner-menu li {
     font-size: 0.7em;
   }
 
-  #main-menu li:first-child {
-    margin-right: 0.3em;
-    font-size: 1.1em;
+  #title-image {
+    margin-left: -0.3em;
+    margin-right: 0.2em;
+    font-size: 1.6em;
   }
 
   #start,
@@ -113,6 +119,12 @@ main {
   #music-icon,
   #menu {
     font-size: 1.5em;
+  }
+
+  #start,
+  #pause,
+  #restart {
+    margin-right: 0.65em;
   }
 
   #music-icon {

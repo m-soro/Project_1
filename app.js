@@ -350,7 +350,6 @@ function invertColor() {
 }
 
 function collisionDetection() {
-  console.log();
   // instead of writing muliple conditions its so much easier to understand if its broken up to separate functions
   // for collision in x axis and xollision in y axis
   if (collisionX()) {
