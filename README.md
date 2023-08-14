@@ -54,7 +54,7 @@ Now that the app is functioning, I could visualize a blueprint for how the objec
 
 - The ball velocity and CSS position property are two different data types. I keep on forgetting that these are strings and that these needed to be converted to ints before processing them.
 - What I could have done is define this properties as ints in the object's constructor class and then just concatenate the "px" after values have been processed and ready to be assigned to CSS. I didn't get to refactor this due to project deadline.
-- There are many tutorials on how to write a collision detection function, what I fopund helpful is to break this function down so I could fully understand it. I found it difficult to comprehend a long conditional statement.
+- There are many tutorials on how to write a collision detection function, what I found helpful is to break this function down so I could fully understand it. I found it difficult to comprehend a long conditional statement.
 - I had a lot of confusion with the screen's X and Y coordinates.
 - Confusion with the ball X and Y values to CSS properties. I spent a lot of time trying to debug something simple like this.
 
@@ -69,15 +69,15 @@ Now that the app is functioning, I could visualize a blueprint for how the objec
 **Design and Flourishes**
 
 - To keep the clean and minimal look:
-- I opted for only font type and solid colors for header and background color choices.
-- The main title and "keep going at it" messages that flashes every 20th score gradually changes hue.
+- I opted for only one font type and solid colors for header and background color choices.
+- The main title and motivating messages that flashes every points gradually changes hue.
 - A happy chime plays every 100 points.
 - Some icons mutate and changes color when clicked.
 - I used colors and icon mutation to guide the user what should they do next specifically after game over.
 
 **Known Issues**
 
-- The ball sometimes "runs" in the paddle
+- The ball sometimes "runs" in the paddle.
 - After game over the ball remains in the page, you can keep on clicking the play button and the ball will still keep on incrementing its Y position. This is where I used the icon mutation and colors to guide the user what to do next. Instead of flashing a message to restart.
 
 **Future Plans**
