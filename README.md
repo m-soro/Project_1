@@ -28,7 +28,10 @@ This is project one of three for my Software Enegineering course at PerScholas.
 
 **Introduction**
 
-I was glad the way this project turned out. I had a lot of fun building it and playing it and adding functionality that the user may like while keeping it clean looking and minimalist.
+I am so glad the way this project turned out. I had a lot of fun building it as well as playing it!
+Take about design
+the challenge
+the UI experience
 
 **Process**
 

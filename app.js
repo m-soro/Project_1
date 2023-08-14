@@ -478,8 +478,8 @@ function mouseMove(event) {
 function changeHue(textElement) {
   let hue = 0;
   setInterval(() => {
-    hue = (hue + 1) % 360;
-    const color = `hsl(${hue}, 90%, 70%)`;
+    hue = (hue + 1) % 300;
+    const color = `hsl(${hue}, 100%, 60%)`;
     textElement.style.color = color;
   }, 50);
 }
