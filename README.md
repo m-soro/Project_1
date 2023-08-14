@@ -70,7 +70,7 @@ Now that the app is functioning, I could visualize a blueprint for how the objec
 
 - To keep the clean and minimal look:
 - I opted for only one font type and solid colors for header and background color choices.
-- The main title and motivating messages that flashes every points gradually changes hue.
+- The main title and motivating messages that flashes every 20 points gradually changes hue.
 - A happy chime plays every 100 points.
 - Some icons mutate and changes color when clicked.
 - I used colors and icon mutation to guide the user what should they do next specifically after game over.
@@ -83,7 +83,7 @@ Now that the app is functioning, I could visualize a blueprint for how the objec
 **Future Plans**
 
 - Re-write this using object oriented principles.
-- Fix the ball "running" issue
+- Fix the ball "running" issue.
 - Improve the collision detection function. A more advance approach is alter the velocity of the ball depending on where it hit the paddle.
 - If time permits, I may update the UI to be seasonal, i.e. halloween theme, holiday etc.
 
