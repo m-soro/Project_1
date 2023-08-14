@@ -64,7 +64,7 @@ Now that the app is functioning, I could visualize a blueprint for how the objec
 - This is where I created an inner menu drop down, now the problem is that playing area is getting smaller and smaller as I am adding another layer on top of the screen.
 - I fixed this by inverting the color of the ball and toggling between showing and hiding the inner menu. Now the app has a header and the ball bounces in full screen.
 - The mode selection options are all related so its only one function. The sounds and background are separate. At first I was hardcoding a function that closes the inner menu when other options are clicked but it would for some and will not for others.
-- I the created a separate function that will just close the inner menu regardless of what is clicked.
+- The solution was to create a separate function that will just close the inner menu regardless of what is clicked.
 
 **Design and Flourishes**
 
