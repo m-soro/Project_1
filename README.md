@@ -12,7 +12,7 @@
 
 ## Save or bookmark this link -> https://m-soro.github.io/Project_1/
 
-## QR Code
+## or share with QR code
 
 ![image](image/msoro.pong!.png)
 
