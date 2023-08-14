@@ -32,7 +32,7 @@ This is my first project for the Software Enegineering course at PerScholas.
 
 **Introduction**
 
-I am so glad the way this project turned out. My goal is to create an interactive and engaging app.
+I am so glad the way this app turned out. My goal is to create an interactive and engaging app.
 I wanted a clean, minimalist look while offering functionalities that the user may expect.
 It was a lot of fun building it, and playing with it.
 
