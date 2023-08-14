@@ -12,6 +12,10 @@
 
 ## Save or bookmark this link -> https://m-soro.github.io/Project_1/
 
+## QR Code
+
+![image](image/msoro.pong!.png)
+
 This is my first project for the Software Enegineering course at PerScholas.
 
 **Keyboard Controls:**
