@@ -91,5 +91,6 @@ Now that the app is functioning, I could visualize a blueprint for how the objec
 
 - Lots of youtube tutorials
 - LinkedIn Learning
+- Sound effects and music from mixkit.co
 - My app tester J.K.
 - And the excellent instructors at PerScholas
