@@ -77,17 +77,21 @@ main {
 
 #start,
 #pause,
-#restart {
+#restart,
+#music-icon {
   margin-right: 0.4em;
   font-size: 2em;
 }
 
 #music-icon {
   font-size: 1.8em;
-  margin-right: 1em;
 }
 
-#menu,
+#info {
+  margin-right: 1em;
+  font-size: 1.8em;
+}
+
 #title-image {
   font-size: 2em;
 }
@@ -118,18 +122,20 @@ main {
   #pause,
   #restart,
   #music-icon,
+  #info,
   #menu {
     font-size: 1.5em;
   }
 
   #start,
   #pause,
-  #restart {
-    margin-right: 0.65em;
+  #restart,
+  #music-icon {
+    margin-right: 0.3em;
   }
 
-  #music-icon {
-    margin-right: 0.8em;
+  #info {
+    margin-right: 0.5em;
   }
 }
 
