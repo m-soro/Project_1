@@ -4,7 +4,7 @@
 
 ## Play on 📱
 
-![image](image/demo-mobile.jpeg)
+![image](image/demo-mobile.gif)
 
 ## Play on 💻 or 🖥️
 
