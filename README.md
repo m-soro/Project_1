@@ -16,8 +16,6 @@
 
 ![image](image/msoro.pong!.png)
 
-**Click ⭐ if you like it!**
-
 This is my first project for the Software Enegineering course at PerScholas.
 
 **Keyboard Controls:**
