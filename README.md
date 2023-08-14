@@ -30,7 +30,7 @@ This is my first project for the Software Enegineering course at PerScholas.
 
 I am so glad the way this project turned out. My goal is to create an interactive and engaging app.
 I wanted a clean, minimalist look while offering functionalities that the user may expect.
-I had a lot of fun building it as well as playing it.
+It was a lot of fun building it, and playing with it.
 
 ## Process
 
@@ -42,17 +42,17 @@ This is my first collision based game. I started researching and looking at how 
 
 I wanted to use object oriented principles, so I used classes for the ball and paddle. I then imported these two to the main script, and that's how far I got into it. I immediately found it difficult to conceptualize how all these pieces work together.
 
-Now that the game is functioning, I could see and build a blueprint for how the object's methods and the main script's function can work together.
+Now that the app is functioning, I could visualize a blueprint for how the object's methods and the app script's functions can work together.
 
 **Challenges**
 
 **Back End**
 
-- Ball velocity and css position property. I keep on forgetting that these are strings and that these needed to be converted to ints before processing them.
-- What I could have done is define this properties as ints in the object's constructor class and then just concatenate the "px" after values have been processed and ready to be assigned to css. I didn't get to refactor this due to project deadline.
-- There are many tutorials on how to write a collision detection function, one thing that I found is to break this function down so I could fully understand what its doing. I found it difficult to understand a long condtional statement.
+- The ball velocity and CSS position property are two different data types. I keep on forgetting that these are strings and that these needed to be converted to ints before processing them.
+- What I could have done is define this properties as ints in the object's constructor class and then just concatenate the "px" after values have been processed and ready to be assigned to CSS. I didn't get to refactor this due to project deadline.
+- There are many tutorials on how to write a collision detection function, what I fopund helpful is to break this function down so I could fully understand it. I found it difficult to comprehend a long conditional statement.
 - I had a lot of confusion with the screen's X and Y coordinates.
-- Confusion with assigning the ball velocity to X and Y values respectively. I wasted so much time trying to debug something simple like this.
+- Confusion with the ball X and Y values to CSS properties. I spent a lot of time trying to debug something simple like this.
 
 **Front End**
 
@@ -81,6 +81,7 @@ Now that the game is functioning, I could see and build a blueprint for how the 
 - Re-write this using object oriented principles.
 - Fix the ball "running" issue
 - Improve the collision detection function. A more advance approach is alter the velocity of the ball depending on where it hit the paddle.
+- If time permits, I may update the UI to be seasonal, i.e. halloween theme, holiday etc.
 
 **Acknowledgement**
 
