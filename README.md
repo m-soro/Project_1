@@ -4,17 +4,17 @@
 
 ## Play on 📱
 
-<img src="https://github.com/m-soro/Project_1/blob/main/image/demo-mobile.gif?raw=true" width="340" height="587">
+<img src="https://github.com/m-soro/Project_1/blob/main/image/demo-mobile.gif?raw=true" width="300" height="517">
 
 ## Play on 💻
 
-<img src="https://github.com/m-soro/Project_1/blob/main/image/demo-big-screen.gif?raw=true" width="480" height="399">
+<img src="https://github.com/m-soro/Project_1/blob/main/image/demo-big-screen.gif?raw=true" width="360" height="299">
 
 **Save or bookmark this link https://m-soro.github.io/Project_1/**
 
 **or share with QR code**
 
-<img src="https://github.com/m-soro/Project_1/blob/main/image/msoro.pong!.png?raw=true" width="284" height="284">
+<img src="https://github.com/m-soro/Project_1/blob/main/image/msoro.pong!.png?raw=true" width="256" height="256">
 
 **Keyboard Controls:**
 
