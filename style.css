@@ -35,6 +35,14 @@ body {
   border-bottom: 0.5em solid white;
 }
 
+li {
+  cursor: pointer;
+}
+
+#title-image {
+  cursor: default;
+}
+
 .hide {
   display: none !important;
 }
