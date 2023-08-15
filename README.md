@@ -44,7 +44,7 @@ This is my first collision based game. I started researching and looking at how 
 
 **Execution**
 
-I wanted to use object oriented principles, so I used classes for the ball and paddle. I then imported these two to the main script, and that's how far I got into it. I immediately found it difficult to conceptualize how all these pieces work together.
+I wanted to use object oriented principles, so I used classes for the ball and paddle. I then imported these two to the main script, and that's how far I got into it. I found it difficult to conceptualize how these objects will work together.
 
 Now that the app is functioning, I could visualize a blueprint for how the object's methods and the app script's functions can work together.
 
@@ -84,12 +84,12 @@ Now that the app is functioning, I could visualize a blueprint for how the objec
 - Re-write this using object oriented principles.
 - Fix the ball "running" issue.
 - Improve the collision detection function. A more advance approach is alter the velocity of the ball depending on where it hit the paddle.
-- If time permits, I may update the UI to be seasonal, i.e. halloween theme, holiday etc.
+- If time permits, I may update the UI to be seasonal, i.e. Halloween theme, Holiday themes etc.
 
 **Acknowledgement**
 
-- Youtube Tutorials
+- Youtube
 - LinkedIn Learning
-- Sound effects and music from mixkit.co
+- Sound effects and music from Mixkit.co
 - My app tester J.K.
 - And the excellent instructors at PerScholas
