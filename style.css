@@ -71,7 +71,6 @@ a {
 }
 
 main {
-  border: 1px solid #605a56;
   background-color: #fcfcfc;
 }
 
@@ -102,6 +101,10 @@ main {
 }
 
 @media screen and (max-width: 600px) {
+  main {
+    border: none;
+  }
+
   #main-menu {
     display: flex;
     justify-content: space-around;

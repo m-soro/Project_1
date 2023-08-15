@@ -12,7 +12,7 @@ let paddleObject = {};
 let currentScore = 0;
 let gameAreaWidth;
 let gameAreaHeight;
-let leftAndRightMargin = 20;
+let leftAndRightMargin = 0; // Im just going to leave this here I was developing this with margin for a while and then change it last minute to make the app full screen size
 let ball;
 let drag = false; // variable if the user is dragging
 let score = document.querySelector("#score");
@@ -31,15 +31,8 @@ let message = document.querySelector("#message");
 let isInnerMenuShowing = false;
 let isGameOver = false;
 let isbgMusicOn = false;
-let bgColors = [
-  "#e7eaf6",
-  "#edf7fa",
-  "#f9ecec",
-  "#fcf8f3",
-  "#fbeeff",
-  "#faf5e4",
-  "#ecfeff",
-];
+//prettier-ignore
+let bgColors = ["#e7eaf6","#edf7fa","#f9ecec","#fcf8f3","#fbeeff","#faf5e4","#ecfeff"];
 let lists = document.querySelectorAll("li");
 let messages = [
   "Keep Going!",
@@ -76,14 +69,8 @@ let bgMusic = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/hey!
 //prettier-ignore
 let bell = new Audio("https://github.com/m-soro/Project_1/raw/main/sound/happyBell.wav")
 bgMusic.loop = true;
-let soundEffects = [
-  startSound,
-  ballTap,
-  ballTapWall,
-  gameOverSound,
-  click,
-  bell,
-];
+//prettier-ignore
+let soundEffects = [startSound,ballTap,ballTapWall,gameOverSound,click,bell];
 bell.volume = 0.9;
 bgMusic.volume = 0.4;
 startSound.volume = 0.3;
@@ -165,9 +152,8 @@ function setUpGameArea() {
   start.addEventListener("click", startPlay, false);
   pause.addEventListener("click", pauseGame, false);
   restart.addEventListener("click", reStart, false);
-  music.addEventListener("click", (event) => {
-    playBgMusic(event), false;
-  });
+  // prettier-ignore
+  music.addEventListener("click", (event) => playBgMusic(event), false);
 }
 
 function startPlay() {
@@ -207,7 +193,7 @@ function playBgMusic(event) {
 
 // For the change background color button, I want to be able to cycle through the options one at a time each click
 // Instead of just assigning random colors.To do this I will use a generator function that will yield each color every click.
-// This soultion is a bit hacky but it works I will generate a massive colors array so the user can click 2500 times each game
+// This solution is a bit hacky but it works I will generate a massive colors array so the user can click 2500 times each game
 // before the color defaults to white color LOL!
 function* backgroundColorGenerator() {
   let megaColorsArray = [];
@@ -272,15 +258,18 @@ function keyListeners(event) {
 
   if (event.key === "ArrowLeft") {
     paddleObject.leftPosition -= paddleObject.paddleVelocity;
-    // Smaller number on the left x axis, if paddle is nearing the edge of the screen to the left position it exactly at 10, there is margin of 10 on each side
-    if (paddleObject.leftPosition < 10) paddleObject.leftPosition = 10;
+    console.log(paddleObject.leftPosition);
+    // Smaller number on the left x axis, if paddle is nearing the edge of the screen to the set its left position
+    if (paddleObject.leftPosition < 10) {
+      paddleObject.leftPosition = 0;
+    }
   } else if (event.key == "ArrowRight") {
     paddleObject.leftPosition += paddleObject.paddleVelocity;
     // This checks if the starting edge of the paddle div is going over the available width minus the paddle width
     // if so, the position of the paddle should be set to the available with minus 75, if I hard code 65 which is the
     // paddle width, it goes over? so I'm putting 75 here
     if (paddleObject.leftPosition > availableWidth - 65)
-      paddleObject.leftPosition = availableWidth - 75;
+      paddleObject.leftPosition = availableWidth - 65;
   }
   const paddle = document.querySelector("#paddle");
   paddle.style.left = `${paddleObject.leftPosition}px`;
@@ -390,7 +379,7 @@ function collisionX() {
     // First condition, checks if the ballleftposition is less than 10, left side is SMALL numbers! it goes up the further you move to the right!
     ballObject.leftPosition < leftAndRightMargin / 2 ||
     // Second condition, checks if ballleftposition is greater than the width of the gameArea less the 10px margin on the right. BIG numbers here!
-    ballObject.leftPosition > gameAreaWidth - leftAndRightMargin / 2
+    ballObject.leftPosition > gameAreaWidth - leftAndRightMargin / 2 - 16
   ) {
     ballTapWall.play();
     return true;
@@ -462,12 +451,12 @@ function mouseMove(event) {
     paddleObject.leftPosition = event.clientX - 33 || event.targetTouches[0].pageX - 33;
     // check to make sure paddle stays in the playing area
     if (paddleObject.leftPosition < 10) {
-      paddleObject.leftPosition = 10; // if paddleLeft is less than zero, then move the paddle to left. Prevents the paddle from moving to the left edge of the screen
+      paddleObject.leftPosition = 0; // if paddleLeft is less than 10, then move the paddle 1px. Prevents the paddle from moving to the left edge of the screen
     }
     //check if paddle is overflowing to the right side of the screen
-    // if paddle is greater than the playing Area width minus 64 (the paddle width) + 10 px buffer to the edge
-    if (paddleObject.leftPosition > availableWidth - 75) {
-      paddleObject.leftPosition = availableWidth - 75; // then assign it to the right most part of the screen
+    // if paddle is greater than the playing Area width minus 65 (the paddle width)
+    if (paddleObject.leftPosition > availableWidth - 65) {
+      paddleObject.leftPosition = availableWidth - 65; // then assign it to the right most part of the screen
     }
     let paddle = document.querySelector("#paddle");
     paddle.style.left = paddleObject.leftPosition + "px";
