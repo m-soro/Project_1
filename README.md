@@ -88,7 +88,7 @@ Now that the app is functioning, I could visualize a blueprint for how the objec
 
 **Acknowledgement**
 
-- Youtube
+- YouTube
 - LinkedIn Learning
 - My app tester J.K.
 - Sound effects and music from Mixkit.co
