@@ -8,13 +8,13 @@
 
 ## Play on 💻
 
-<img src="https://github.com/m-soro/Project_1/blob/main/image/demo-big-screen.gif?raw=true" width="360" height="299">
+<img src="https://github.com/m-soro/Project_1/blob/main/image/demo-big-screen.gif?raw=true" width="480" height="399">
 
 **Save or bookmark this link https://m-soro.github.io/Project_1/**
 
 **or share with QR code**
 
-![image](image/msoro.pong!.png)
+<img src="https://github.com/m-soro/Project_1/blob/main/image/msoro.pong!.png?raw=true" width="284" height="284">
 
 **Keyboard Controls:**
 
