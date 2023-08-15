@@ -8,7 +8,7 @@
 
 ## Play on 💻 or 🖥️
 
-![image](image/demo.gif)
+![image](image/demo-big-screen.gif)
 
 ## Save or bookmark this link -> https://m-soro.github.io/Project_1/
 
