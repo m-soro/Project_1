@@ -1,18 +1,18 @@
 # Pong!
 
-## **A super fun classic! This is Pong!**
+## **A classic fun!**
 
 ## Play on 📱
 
 ![image](image/demo-mobile.gif)
 
-## Play on 💻 or 🖥️
+## Play on 💻
 
 ![image](image/demo-big-screen.gif)
 
-## Save or bookmark this link -> https://m-soro.github.io/Project_1/
+**Save or bookmark this link https://m-soro.github.io/Project_1/**
 
-## or share with QR code
+**or share with QR code**
 
 ![image](image/msoro.pong!.png)
 
@@ -73,12 +73,11 @@ Now that the app is functioning, I could visualize a blueprint for how the objec
 - The main title and motivating messages that flashes every 20 points gradually changes hue.
 - A happy chime plays every 100 points.
 - Some icons mutate and changes color when clicked.
-- I used colors and icon mutation to guide the user what should they do next specifically after game over.
+- After the game is over I used colors and icon mutation to guide the user what should they do next.
 
 **Known Issues**
 
 - The ball sometimes "runs" in the paddle.
-- After game over the ball remains in the page, you can keep on clicking the play button and the ball will still keep on incrementing its Y position. This is where I used the icon mutation and colors to guide the user what to do next. Instead of flashing a message to restart.
 
 **Future Plans**
 
@@ -89,7 +88,7 @@ Now that the app is functioning, I could visualize a blueprint for how the objec
 
 **Acknowledgement**
 
-- Lots of youtube tutorials
+- Youtube Tutorials
 - LinkedIn Learning
 - Sound effects and music from mixkit.co
 - My app tester J.K.

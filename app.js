@@ -413,13 +413,12 @@ function collisionY() {
 }
 
 function gameOver() {
+  isGameOver = !isGameOver;
   cancelAnimationFrame(timer);
   score.innerHTML = " ";
   score.innerHTML += `Game Over! Score: ${currentScore}`;
   score.style.backgroundColor = "#bc2525";
-  // the game is still checking the ball position even after game over
-  // this at least gives me a one more buffer before encountering the game over bug.
-  isGameOver = !isGameOver;
+  start.removeEventListener("click", startPlay);
   if (isGameOver) gameOverSound.play();
   start.innerText = "play_disabled";
   restart.innerText = "refresh";
