@@ -266,8 +266,7 @@ function keyListeners(event) {
   } else if (event.key == "ArrowRight") {
     paddleObject.leftPosition += paddleObject.paddleVelocity;
     // This checks if the starting edge of the paddle div is going over the available width minus the paddle width
-    // if so, the position of the paddle should be set to the available with minus 75, if I hard code 65 which is the
-    // paddle width, it goes over? so I'm putting 75 here
+    // if so, the position of the paddle should be set to the available with minus 65 paddle width
     if (paddleObject.leftPosition > availableWidth - 65)
       paddleObject.leftPosition = availableWidth - 65;
   }
@@ -311,7 +310,7 @@ function play() {
   // ball object css top property is string, this needs to be converted to integers first
   ballObject.topPosition = parseInt(ballObject.topPosition);
   // If the ballObject topPosition is smaller number then its up in the gameArea.
-  // Id the top position is smaller compared to the GameArea height less than the height of the paddle
+  // If the top position is smaller compared to the GameArea height less than the height of the paddle
   // Then keep playing
   if (ballObject.topPosition < gameAreaHeight - 25) {
     timer = requestAnimationFrame(play);
@@ -325,7 +324,6 @@ function play() {
  * ---------
  * MOVEBALL
  * ---------
- * Creates point to point animation by adding small increments to ball top and left property
  */
 function moveBall() {
   // grab the ball object created by the SetUpGame function

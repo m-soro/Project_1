@@ -91,6 +91,10 @@ main {
   font-size: 1.8em;
 }
 
+#info:active {
+  color: yellow;
+}
+
 #title-image {
   font-size: 2em;
 }
