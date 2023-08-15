@@ -16,8 +16,6 @@
 
 ![image](image/msoro.pong!.png)
 
-This is my first project for the Software Enegineering course at PerScholas.
-
 **Keyboard Controls:**
 
 - **Left Arrow Key** - move left
@@ -32,9 +30,11 @@ This is my first project for the Software Enegineering course at PerScholas.
 
 **Introduction**
 
+This is my first project for the Software Engineering course at PerScholas.
+
 I am so glad the way this app turned out. My goal is to create an interactive and engaging app.
-I wanted a clean, minimalist look while offering functionalities that the user may expect.
-It was a lot of fun building it, and playing with it.
+I wanted a clean, minimalist look while offering features that the user may expect.
+It was a lot of fun building it, and playing it.
 
 ## Process
 
