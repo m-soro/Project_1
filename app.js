@@ -401,12 +401,11 @@ function collisionY() {
       // Since we know exactly where the objects are in the playing area we can check if the ball is in between the paddle using this positions
       // First condition checks if the ball is at the left edge of the paddle. It asks, is the ball inside the left edge of the paddle?
       // Second condition checks if the ball has gone outside of the paddle right edge position that is the paddle left position + the paddle object width
+      // If so, increment the score
       currentScore += 5;
       ballTap.play()
       everyNthScore();
-      // If so, increment the score
       score.innerHTML = "Score: " + currentScore;
-      //output the score
       return true;
     }
   }
@@ -415,10 +414,10 @@ function collisionY() {
 function gameOver() {
   isGameOver = !isGameOver;
   cancelAnimationFrame(timer);
+  start.removeEventListener("click", startPlay);
   score.innerHTML = " ";
   score.innerHTML += `Game Over! Score: ${currentScore}`;
   score.style.backgroundColor = "#bc2525";
-  start.removeEventListener("click", startPlay);
   if (isGameOver) gameOverSound.play();
   start.innerText = "play_disabled";
   restart.innerText = "refresh";
@@ -438,7 +437,7 @@ function mouseMove(event) {
 
   // if the flag is true then the MouseDown is fired and the mouse Up is not
   if (drag) {
-    // to stop the mouse and touch event firing at the same time
+    // to stop the mouse and touch event firing at the same time. Still failing, this is error message that appears in the console.
     event.preventDefault();
     event.stopImmediatePropagation();
     // get the value of the location of the touch event
@@ -448,7 +447,7 @@ function mouseMove(event) {
     paddleObject.leftPosition = event.clientX - 33 || event.targetTouches[0].pageX - 33;
     // check to make sure paddle stays in the playing area
     if (paddleObject.leftPosition < 10) {
-      paddleObject.leftPosition = 0; // if paddleLeft is less than 10, then move the paddle 1px. Prevents the paddle from moving to the left edge of the screen
+      paddleObject.leftPosition = 0; // if paddleLeft is less than 10, then move the paddle 0px position. Prevents the paddle from moving to the left edge of the screen
     }
     //check if paddle is overflowing to the right side of the screen
     // if paddle is greater than the playing Area width minus 65 (the paddle width)
@@ -460,7 +459,7 @@ function mouseMove(event) {
   }
 }
 
-// Some Fun Font Styling!
+// Change Hue Function
 function changeHue(textElement) {
   let hue = 0;
   setInterval(() => {

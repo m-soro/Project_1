@@ -4,11 +4,11 @@
 
 ## Play on 📱
 
-![image](image/demo-mobile.gif)
+<img src="https://github.com/m-soro/Project_1/blob/main/image/demo-mobile.gif?raw=true" width="340" height="587">
 
 ## Play on 💻
 
-![image](image/demo-big-screen.gif)
+<img src="https://github.com/m-soro/Project_1/blob/main/image/demo-big-screen.gif?raw=true" width="360" height="299">
 
 **Save or bookmark this link https://m-soro.github.io/Project_1/**
 
@@ -90,6 +90,6 @@ Now that the app is functioning, I could visualize a blueprint for how the objec
 
 - Youtube
 - LinkedIn Learning
-- Sound effects and music from Mixkit.co
 - My app tester J.K.
-- And the excellent instructors at PerScholas
+- Sound effects and music from Mixkit.co
+- And the excellent instructors at Per Scholas
