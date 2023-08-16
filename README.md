@@ -14,7 +14,7 @@
 
 **or share with QR code**
 
-<img src="https://github.com/m-soro/Project_1/blob/main/image/msoro.pong!.png?raw=true" width="240" height="240">
+<img src="https://github.com/m-soro/Project_1/blob/main/image/msoro.pong!.png?raw=true" width="200" height="200">
 
 **Keyboard Controls:**
 
