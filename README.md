@@ -1,6 +1,6 @@
 # Pong!
 
-## **A fun classic!**
+
 
 ## Play on 📱
 
