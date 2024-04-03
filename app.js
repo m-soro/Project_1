@@ -1,7 +1,7 @@
 import Paddle from "./Paddle.js";
 import Ball from "./Ball.js";
 
-console.log("Hello from Pong! and thanks for playing!");
+console.log("Hello from Pong! Have fun and thanks for playing!");
 let availableWidth;
 let availableHeight;
 let main;
