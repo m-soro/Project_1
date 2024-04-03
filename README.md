@@ -1,22 +1,20 @@
 # Pong!
 
-## **A super fun classic! This is Pong!**
+
 
 ## Play on 📱
 
-![image](image/demo-mobile.gif)
+<img src="https://github.com/m-soro/Project_1/blob/main/image/demo-mobile.gif?raw=true" width="300" height="517">
 
-## Play on 💻 or 🖥️
+## Play on 💻
 
-![image](image/demo.gif)
+<img src="https://github.com/m-soro/Project_1/blob/main/image/demo-big-screen.gif?raw=true" width="360" height="299">
 
-## Save or bookmark this link -> https://m-soro.github.io/Project_1/
+**Save or bookmark this link https://m-soro.github.io/Project_1/**
 
-## or share with QR code
+**or share with QR code**
 
-![image](image/msoro.pong!.png)
-
-This is my first project for the Software Enegineering course at PerScholas.
+<img src="https://github.com/m-soro/Project_1/blob/main/image/msoro.pong!.png?raw=true" width="180" height="180">
 
 **Keyboard Controls:**
 
@@ -32,9 +30,11 @@ This is my first project for the Software Enegineering course at PerScholas.
 
 **Introduction**
 
+This is my first project for the Software Engineering course at PerScholas. [View Project Requirements.](files/project1Requirements.pdf)
+
 I am so glad the way this app turned out. My goal is to create an interactive and engaging app.
-I wanted a clean, minimalist look while offering functionalities that the user may expect.
-It was a lot of fun building it, and playing with it.
+I wanted a clean, minimalist look while offering features that the user may expect.
+It was a lot of fun building it, and playing it.
 
 ## Process
 
@@ -44,7 +44,7 @@ This is my first collision based game. I started researching and looking at how 
 
 **Execution**
 
-I wanted to use object oriented principles, so I used classes for the ball and paddle. I then imported these two to the main script, and that's how far I got into it. I immediately found it difficult to conceptualize how all these pieces work together.
+I wanted to use object oriented principles, so I used classes for the ball and paddle. I then imported these two to the main script, and that's how far I got into it. I found it difficult to conceptualize how these objects will work together.
 
 Now that the app is functioning, I could visualize a blueprint for how the object's methods and the app script's functions can work together.
 
@@ -73,24 +73,23 @@ Now that the app is functioning, I could visualize a blueprint for how the objec
 - The main title and motivating messages that flashes every 20 points gradually changes hue.
 - A happy chime plays every 100 points.
 - Some icons mutate and changes color when clicked.
-- I used colors and icon mutation to guide the user what should they do next specifically after game over.
+- After the game is over I used colors and icon mutation to guide the user what should they do next.
 
 **Known Issues**
 
 - The ball sometimes "runs" in the paddle.
-- After game over the ball remains in the page, you can keep on clicking the play button and the ball will still keep on incrementing its Y position. This is where I used the icon mutation and colors to guide the user what to do next. Instead of flashing a message to restart.
 
 **Future Plans**
 
 - Re-write this using object oriented principles.
 - Fix the ball "running" issue.
 - Improve the collision detection function. A more advance approach is alter the velocity of the ball depending on where it hit the paddle.
-- If time permits, I may update the UI to be seasonal, i.e. halloween theme, holiday etc.
+- If time permits, I may update the UI to be seasonal, i.e. Halloween theme, Holiday themes etc.
 
 **Acknowledgement**
 
-- Lots of youtube tutorials
+- YouTube
 - LinkedIn Learning
-- Sound effects and music from mixkit.co
 - My app tester J.K.
-- And the excellent instructors at PerScholas
+- Sound effects and music from Mixkit.co
+- And the excellent instructors at Per Scholas

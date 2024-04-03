@@ -35,6 +35,14 @@ body {
   border-bottom: 0.5em solid white;
 }
 
+li {
+  cursor: pointer;
+}
+
+#title-image {
+  cursor: default;
+}
+
 .hide {
   display: none !important;
 }
@@ -71,7 +79,6 @@ a {
 }
 
 main {
-  border: 1px solid #605a56;
   background-color: #fcfcfc;
 }
 
@@ -92,6 +99,10 @@ main {
   font-size: 1.8em;
 }
 
+#info:active {
+  color: yellow;
+}
+
 #title-image {
   font-size: 2em;
 }
@@ -102,6 +113,10 @@ main {
 }
 
 @media screen and (max-width: 600px) {
+  main {
+    border: none;
+  }
+
   #main-menu {
     display: flex;
     justify-content: space-around;
@@ -144,4 +159,45 @@ main {
   padding: 0.5em;
   font-size: 1.2em;
   text-align: center;
+}
+
+/* From https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_arrow_top*/
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #0a0044;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent#0a0044 transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltiptext {
+  font-size: small;
+  font-weight: 200;
 }
