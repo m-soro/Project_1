@@ -1,7 +1,5 @@
 # Pong!
 
-
-
 ## Play on 📱
 
 <img src="https://github.com/m-soro/Project_1/blob/main/image/demo-mobile.gif?raw=true" width="300" height="517">
@@ -30,7 +28,7 @@
 
 **Introduction**
 
-This is my first project for the Software Engineering course at PerScholas. [View Project Requirements.](files/project1Requirements.pdf)
+This is my first project for the Software Engineering course at Per Scholas. [View Project Requirements.](files/project1Requirements.pdf)
 
 I am so glad the way this app turned out. My goal is to create an interactive and engaging app.
 I wanted a clean, minimalist look while offering features that the user may expect.
