@@ -90,4 +90,4 @@ Now that the app is functioning, I could visualize a blueprint for how the objec
 - LinkedIn Learning
 - My app tester J.K.
 - Sound effects and music from Mixkit.co
-- And the amazing instructors at Per Scholas
+- And the excellent instructors at Per Scholas
